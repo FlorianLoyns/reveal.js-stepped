@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stepped — Demo</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+<style>
+  .reveal .controls { color: #2C4A6E !important; }
+  .reveal h1, .reveal h2 { color: #2C4A6E; }
+  .reveal blockquote { box-shadow: none; background: none; width: 100%; font-style: normal; }
+  .reveal code { background:#EDF1F5; padding:.1em .3em; border-radius:4px; font-size:.85em }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section>
+      <h2>Stepped</h2>
+      <p style="font-size:.6em">Long quotes, revealed <strong>sentence by sentence</strong>.</p>
+      <p style="font-size:.45em;color:#777">You write the text. The plugin does the splitting.<br>Arrow keys step through it.</p>
+    </section>
+
+    <section>
+      <h3 style="color:#2C4A6E">Build — one after another</h3>
+      <blockquote class="stepped" style="font-size:.52em;line-height:1.5">
+        Science is not a collection of facts, but a way of asking questions. Every answer we accept
+        is provisional, held only until better evidence arrives. This is not a weakness of the method.
+        It is, in fact, the whole of it.
+      </blockquote>
+      <p style="font-size:.35em;color:#999;margin-top:1em">Nobody reads ahead. What you have discussed steps back.</p>
+    </section>
+
+    <section>
+      <h3 style="color:#2C4A6E">Focus — context stays</h3>
+      <blockquote class="stepped" data-mode="focus" data-marker="true" style="font-size:.52em;line-height:1.5">
+        Science is not a collection of facts, but a way of asking questions. Every answer we accept
+        is provisional, held only until better evidence arrives. This is not a weakness of the method.
+        It is, in fact, the whole of it.
+      </blockquote>
+      <p style="font-size:.35em;color:#999;margin-top:1em">The whole text is there. Only the current sentence is awake.</p>
+    </section>
+
+    <section>
+      <h3 style="color:#2C4A6E">Numbered — for pointing</h3>
+      <blockquote class="stepped" data-mode="focus" data-numbered="true" style="font-size:.52em;line-height:1.5">
+        The skin is the largest organ of the human body. It protects against water loss and pathogens.
+        With age, sebum production declines. The skin dries out, which raises the risk of pressure injury.
+      </blockquote>
+      <p style="font-size:.35em;color:#999;margin-top:1em">"Look at sentence 3."</p>
+    </section>
+
+    <section>
+      <h3 style="color:#2C4A6E">It knows the traps</h3>
+      <blockquote class="stepped" style="font-size:.5em;line-height:1.5">
+        On 1. January the term begins. Dr. Meyer showed this in 1998, cf. Müller 2020, p. 45.
+        The finding holds, e.g., for all age groups. "Quotation marks end here." And the next sentence starts.
+      </blockquote>
+      <p style="font-size:.35em;color:#999;margin-top:1em">Abbreviations, ordinals, initials and quotation marks are handled.<br>Where it still slips: split by hand with <code>data-by="manual"</code> and <code>|</code>.</p>
+    </section>
+
+  </div>
+</div>
+
+<footer style="position:fixed;left:0;right:0;bottom:6px;text-align:center;font-size:12px;font-family:system-ui,-apple-system,sans-serif;z-index:40;pointer-events:none;">
+  <a href="https://florianloyns.com/Impressum/" target="_blank" rel="noopener"
+     style="color:#8a99a8;text-decoration:none;pointer-events:auto;">Impressum</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="plugin/stepped/stepped.js?v=1.0.0"></script>
+<script>
+  Reveal.initialize({ hash: true, plugins: [ RevealStepped ] });
+</script>
+</body>
+</html>

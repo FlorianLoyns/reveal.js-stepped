@@ -16,6 +16,8 @@ Revealing it sentence by sentence solves that, but doing it by hand means wrappi
 
 ## Installation
 
+**Requires** reveal.js 4.2 or newer. Tested with reveal.js 5.x.
+
 ```console
 npm install reveal.js-stepped
 ```

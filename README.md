@@ -108,6 +108,10 @@ Per-slide `data-*` attributes always beat the global setting.
 
 In the overview and when printing, the full text is shown — a handout should not have holes in it. Respects `prefers-reduced-motion`. Without JavaScript the text is simply there and readable, so nothing is lost.
 
+## Imprint
+
+Responsible: Florian Loyns — [imprint & privacy notice](https://florianloyns.com/Impressum/) (German)
+
 ## License
 
 MIT — see [LICENSE](LICENSE). Built for [reveal.js](https://revealjs.com) by Hakim El Hattab.

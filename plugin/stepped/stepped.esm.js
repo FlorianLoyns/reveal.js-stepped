@@ -1,5 +1,5 @@
 /*!
- * reveal.js-stepped 1.0.0
+ * reveal.js-stepped 1.0.1
  * Build long quotes and source texts sentence by sentence instead of dropping
  * them on the audience at once — so their eyes are on the line you are talking
  * about. Splits German and English prose into sentences by itself (abbreviations,
@@ -112,6 +112,9 @@
     + ".reveal .stepped.stp-focus .stp{opacity:" + o.dim + ";visibility:visible}"
     + ".reveal .stepped.stp-focus .stp.current-fragment{opacity:1}"
     + ".reveal .stepped .stp.current-fragment{color:" + o.accent + "}"
+      /* Kein Schritt aktiv (noch nicht begonnen oder schon darüber hinaus):
+         der Text steht wieder ganz normal da, statt blass liegen zu bleiben. */
+    + ".reveal .stepped.stp-idle .stp,.reveal .stepped.stp-idle .stp.visible{opacity:1}"
       /* Textmarker auf dem aktuellen Satz */
     + ".reveal .stepped.stp-marker .stp.current-fragment{background:" + o.marker + ";"
       + "box-shadow:0 0 0 4px " + o.marker + ";border-radius:2px}"
@@ -196,12 +199,23 @@
         [].forEach.call(all, function(el, i){ el.setAttribute('data-fragment-index', i); });
       }
 
-      function run(){ [].forEach.call(d.querySelectorAll('.stepped'), build); }
+      function run(){ [].forEach.call(d.querySelectorAll('.stepped'), build); syncIdle(); }
+
+      /* Liegt in diesem Block gerade ein Schritt vorn? Wenn nicht, ist der Block "idle"
+         und zeigt den vollen Text – sonst bliebe ein Zitat dauerhaft blass, sobald man
+         über den letzten Satz hinausgeklickt hat. */
+      function syncIdle(){
+        [].forEach.call(d.querySelectorAll('.stepped'), function(h){
+          h.classList.toggle('stp-idle', !h.querySelector('.stp.current-fragment'));
+        });
+      }
 
       run();
       if (deck.on){
         deck.on('ready', run);
         deck.on('slidechanged', run);
+        deck.on('fragmentshown', syncIdle);
+        deck.on('fragmenthidden', syncIdle);
       }
 
       Plugin.rebuild = run;

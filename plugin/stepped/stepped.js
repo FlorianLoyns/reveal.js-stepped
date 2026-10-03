@@ -1,5 +1,5 @@
 /*!
- * reveal.js-stepped 1.0.1
+ * reveal.js-stepped 1.0.2
  * Build long quotes and source texts sentence by sentence instead of dropping
  * them on the audience at once — so their eyes are on the line you are talking
  * about. Splits German and English prose into sentences by itself (abbreviations,
@@ -15,6 +15,23 @@
   (global = global || self, global.RevealStepped = factory());
 }(this, (function () {
   'use strict';
+
+  /* ---- Druck: überall gleich erkannt und gleich ausgegeben ----
+     reveal.js baut die Druckansicht mit ?print-pdf in der URL (oder view:'print'
+     in der Konfiguration) und setzt dann nur Klassen an <html>; @media print greift
+     erst im Druckdialog. Darum jede Druckregel zweimal: für den Druckdialog und
+     für die ?print-pdf-Ansicht – so sieht die Vorschau im Browser aus wie das PDF. */
+  function isPrintView(deck){
+    if (/(?:\?|&)print-pdf\b/i.test(window.location.search)) return true;
+    var c = deck && deck.getConfig ? deck.getConfig() : null;
+    return !!(c && c.view === 'print');
+  }
+  function printCSS(css){
+    var pdf = css.replace(/(^|\})([^{}]+)\{/g, function (m, vor, sel) {
+      return vor + sel.split(',').map(function (s) { return 'html.print-pdf ' + s.trim(); }).join(',') + '{';
+    });
+    return '@media print{' + css + '}' + pdf;
+  }
 
   /* Wörter, nach deren Punkt kein Satz endet. Ohne diese Liste zerfällt jedes
      "z. B." und jeder "Dr. Meyer" in zwei Schritte. */
@@ -128,7 +145,7 @@
     + ".reveal .stepped.stp-num .stp::before{content:counter(stp);font-size:.62em;font-weight:700;"
       + "vertical-align:super;color:" + o.accent + ";opacity:.55;margin-right:.25em}"
       /* Im Druck und in der Übersicht steht der Text vollständig da */
-    + "@media print{.reveal .stepped .stp{opacity:1 !important;visibility:visible !important;background:none !important;box-shadow:none !important;color:inherit !important}}"
+    + printCSS(".reveal .stepped .stp{opacity:1 !important;visibility:visible !important;background:none !important;box-shadow:none !important;color:inherit !important}")
     + ".reveal.overview .stepped .stp{opacity:1 !important;visibility:visible !important}"
     + "@media (prefers-reduced-motion:reduce){.reveal .stepped .stp{transition:none}}";
     var s = document.createElement('style');

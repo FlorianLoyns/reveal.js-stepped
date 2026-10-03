@@ -1,6 +1,6 @@
 {
   "name": "reveal.js-stepped",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Build long quotes and source texts sentence by sentence in reveal.js, so the audience reads the line you are talking about. Splits German and English prose into sentences by itself.",
   "keywords": ["reveal","reveal.js","reveal-plugin","plugin","fragments","quote","text","teaching","reading","source-text","presentation"],
   "homepage": "https://github.com/florianloyns/reveal.js-stepped",

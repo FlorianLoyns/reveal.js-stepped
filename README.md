@@ -110,6 +110,10 @@ Per-slide `data-*` attributes always beat the global setting.
 
 In the overview and when printing, the full text is shown — a handout should not have holes in it. Respects `prefers-reduced-motion`. Without JavaScript the text is simply there and readable, so nothing is lost.
 
+## Changelog
+
+**1.0.2** — Print detection unified across the plugin family: every print rule now applies both in the browser print dialog and in reveal’s `?print-pdf` view, so the on-screen preview looks like the PDF; the print view is recognised the same way everywhere (`?print-pdf` or `view: 'print'`).
+
 ## Imprint
 
 Responsible: Florian Loyns — [imprint & privacy notice](https://florianloyns.com/Impressum/) (German)

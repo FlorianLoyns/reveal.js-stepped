@@ -1,5 +1,5 @@
 /*!
- * reveal.js-stepped 1.0.2
+ * reveal.js-stepped 1.0.3
  * Build long quotes and source texts sentence by sentence instead of dropping
  * them on the audience at once — so their eyes are on the line you are talking
  * about. Splits German and English prose into sentences by itself (abbreviations,
@@ -162,7 +162,7 @@
       var o = {
         by: c.by || 'sentence',          // 'sentence' | 'line' | 'manual'
         mode: c.mode || 'build',         // 'build' | 'focus'
-        accent: c.accent || '#12294A',
+        accent: c.accent || '#2C4A6E',
         marker: c.marker || 'rgba(217,147,10,.28)',
         dim: (c.dim != null) ? c.dim : 0.3,      // Sättigung im Fokus-Modus
         past: (c.past != null) ? c.past : 0.5,   // schon Besprochenes im Aufbau-Modus

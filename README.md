@@ -8,6 +8,8 @@ You write the text normally. Stepped splits it into sentences itself and turns e
 
 **[Live demo](https://florianloyns.github.io/reveal.js-stepped/demo.html)**
 
+[![Screenshot](screenshot.svg)](https://florianloyns.github.io/reveal.js-stepped/demo.html)
+
 ## Why
 
 Put a dense paragraph on screen and you lose the room for fifteen seconds: everyone reads it, at their own speed, in their own order. By the time you say "note the second clause", half of them are already at the end and the other half have given up.
@@ -97,7 +99,7 @@ Reveal.initialize({
     past: 0.5,          // how far discussed sentences recede in build mode
     showMarker: false,
     numbered: false,
-    accent: '#12294A',
+    accent: '#2C4A6E',
     marker: 'rgba(217,147,10,.28)'
   },
   plugins: [ RevealStepped ]
@@ -111,6 +113,8 @@ Per-slide `data-*` attributes always beat the global setting.
 In the overview and when printing, the full text is shown — a handout should not have holes in it. Respects `prefers-reduced-motion`. Without JavaScript the text is simply there and readable, so nothing is lost.
 
 ## Changelog
+
+**1.0.3** — Default `accent` is now the family marine `#2C4A6E` (was the darker `#12294A`), so Stepped matches the other plugins out of the box. Set `accent: '#12294A'` to keep the old colour.
 
 **1.0.2** — Print detection unified across the plugin family: every print rule now applies both in the browser print dialog and in reveal’s `?print-pdf` view, so the on-screen preview looks like the PDF; the print view is recognised the same way everywhere (`?print-pdf` or `view: 'print'`).
 
